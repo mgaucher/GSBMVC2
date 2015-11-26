@@ -297,5 +297,19 @@ class PdoGsb{
 		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		$this->monPdo->exec($req);
 	}
+        
+//        affichage pour un visiteur des fiches de frais des 12 
+//        derniers mois qui sontvalidées ou remboursées 
+        public function getListeVisiteur(){
+            //VA RB
+            $req ="select  visiteur.nom , fichefrais.idVisiteur,fichefrais.mois "
+                    . "from Etat inner join fichefrais on Etat.id = fichefrais.idEtat"
+                    . " inner join visiteur on fichefrais.idVisiteur = visiteur.id where fichefrais.idEtat ='VA' OR fichefrais.idEtat ='RB'"
+                    . "group by visiteur.nom";
+            $res = $this->monPdo->query($req);
+		$laLigne = $res->fetchAll();
+		return $laLigne;
+        }
+       
 }
 ?>
