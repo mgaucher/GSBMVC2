@@ -59,8 +59,29 @@ class PdoGsb{
 		$ligne = $rs->fetch();
 		return $ligne;
 	}
-
+        
+        
+        public function getConnexionVisiteur($login, $mdp)
+        {
+            $req= "select connection.login as login, connection.mdp as mdp, visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from 
+                    connection INNER JOIN visiteur ON connection.id = visiteur.id
+                    where connection.login='$login' and connection.mdp='$mdp'";
+            $rs = $this->monPdo->query($req);
+            $ligne = $rs->fetch();
+            return $ligne;
+        }
+        
+        public function getConnexionComptable($login, $mdp)
+        {
+            $req= "select connection.login as login, connection.mdp as mdp, comptable.id as id, comptable.nom as nom, comptable.prenom as prenom from 
+                    connection INNER JOIN comptable ON connection.id = comptable.id
+                    where connection.login='$login' and connection.mdp='$mdp'";
+            $rs = $this->monPdo->query($req);
+            $ligne = $rs->fetch();
+            return $ligne;
+        }
 /**
+ * 
  * Retourne sous forme d'un tableau associatif toutes les lignes de frais hors forfait
  * concernées par les deux arguments
  
