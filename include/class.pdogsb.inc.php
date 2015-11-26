@@ -297,5 +297,18 @@ class PdoGsb{
 		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		$this->monPdo->exec($req);
 	}
+        
+        public function getTousVisiteursAvecFicheCloturee(){
+                $req = "SELECT * FROM fichefrais INNER JOIN visiteur ON idVisiteur = id WHERE idEtat = 'CL' ORDER BY visiteur.nom";
+                $res = $this->monPdo->query($req);
+		return $res;
+        }
+        
+        public function getToutesFichesFraisParUtilisateur($idVisiteur){
+             $req = "SELECT * FROM fichefrais WHERE idEtat = 'CL' AND idVisiteur = '".$idVisiteur."'";
+             $res = $this->monPdo->query($req);
+	return $res;
+        
+        }
 }
 ?>
