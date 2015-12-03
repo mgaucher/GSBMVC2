@@ -319,6 +319,18 @@ class PdoGsb{
 		$this->monPdo->exec($req);
 	}
         
+        public function getTousVisiteursAvecFicheCloturee(){
+                $req = "SELECT * FROM fichefrais INNER JOIN visiteur ON idVisiteur = id WHERE idEtat = 'CL' ORDER BY visiteur.nom";
+                $res = $this->monPdo->query($req);
+		return $res;
+        }
+        
+        public function getToutesFichesFraisParUtilisateur($idVisiteur){
+             $req = "SELECT * FROM fichefrais WHERE idEtat = 'CL' AND idVisiteur = '".$idVisiteur."'";
+             $res = $this->monPdo->query($req);
+	return $res;
+        
+        }
 //        affichage pour un visiteur des fiches de frais des 12 
 //        derniers mois qui sontvalidées ou remboursées 
         public function getListeVisiteur(){

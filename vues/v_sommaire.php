@@ -15,6 +15,21 @@
            <li>
               <a href="index.php?uc=etatFrais&action=selectionnerMois" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
            </li>
+           
+           <!-- Si l'utilisateur est un comptable alors afficher cette fonctionnalité -->
+           <?php 
+            if($id == "f4")
+            {
+           ?>
+           
+           <li>
+              <a href="index.php?uc=validerFrais&action=afficherFormulaireValidationFicheFrais" title="Validation de fiche de frais">Valider fiche de frais</a>
+           </li>
+           
+           <?php        
+            }
+           ?>          
+           
             <?php 
            if($_SESSION['prenom'])
            {
