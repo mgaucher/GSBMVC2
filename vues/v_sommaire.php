@@ -18,8 +18,8 @@
            
            <!-- Si l'utilisateur est un comptable alors afficher cette fonctionnalité -->
            <?php 
-            if($id == "f4")
-            {
+          //  if($id == "f4")
+          //  {
            ?>
            
            <li>
@@ -27,17 +27,17 @@
            </li>
            
            <?php        
-            }
+        //    }
            ?>          
            
             <?php 
-           if($_SESSION['prenom'])
-           {
+           //if($type == "co")
+          // {
                ?>
            <li>
               <a href="index.php?uc=suivrePaiement&action=suivrePaiement" title="Se déconnecter">Suivie paiement fiche frais</a>
            </li>
-        <?php  }?>
+        <?php // }?>
  	   <li>
               <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
            </li>
