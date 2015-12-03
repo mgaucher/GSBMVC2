@@ -5,15 +5,43 @@
 
           <label>Les visiteurs ayant des fiches frais à l'état "clôturée" :</label>
           <br/>
+          
+          <table>
+              <thead>
+                  <tr>Nom d'utilisateur :</tr>
+                  <tr>Mois :</tr>
+                  <tr></tr>
+              </thead>
+              
            <?php
+           $var = "";        
          foreach ( $visiteursAvecFicheCloturee as $unVisiteur ) 
-	{            
-           	
-            echo $unVisiteur['id']." ".$unVisiteur['nom']." ".$unVisiteur['prenom']."<br/>"; 
-            echo "fiche de frais cloturée : <br/><br/>";
+	{           
+             echo "<tbody>";
+            if ($var != $unVisiteur['id'])
+            {
+                echo $unVisiteur['id']." ".$unVisiteur['nom']." ".$unVisiteur['prenom']."<br/>"; 
+                echo "fiche de frais cloturée : <br/>";
+                
+                echo "<td>".$unVisiteur['nom']."</td>";
+               
+            }
             
+             else 
+             {
+                 echo "<td></td>";
+             }
+            echo "<td>".$unVisiteur['mois']."</td><br/>";
+            
+            //parcourir les lignes résultats tant que le visiteur a encore des fiches frais cloturées.
+            $var = $unVisiteur['id'];
+            
+            echo "<td>Valider</td>";
+            echo "</tbody>";
         }
             ?>
+           
+          </table>
               
 <?php 
     if (isset($_REQUEST['erreurs'])&& $_REQUEST['erreurForm']=="FraisForfait") 

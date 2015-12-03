@@ -18,7 +18,7 @@
            
            <!-- Si l'utilisateur est un comptable alors afficher cette fonctionnalité -->
            <?php 
-            if($id == "f4")
+            if($_SESSION['prenom'])
             {
            ?>
            
