@@ -336,7 +336,7 @@ class PdoGsb{
 //        derniers mois qui sontvalidées ou remboursées 
         public function getListeVisiteur(){
             //VA RB
-            $req ="select  visiteur.nom , fichefrais.idVisiteur,fichefrais.mois "
+            $req ="select visiteur.id, visiteur.nom , fichefrais.idVisiteur,fichefrais.mois "
                     . "from Etat inner join fichefrais on Etat.id = fichefrais.idEtat"
                     . " inner join visiteur on fichefrais.idVisiteur = visiteur.id where fichefrais.idEtat ='VA' OR fichefrais.idEtat ='RB'"
                     . "group by visiteur.nom";
@@ -344,6 +344,13 @@ class PdoGsb{
 		$laLigne = $res->fetchAll();
 		return $laLigne;
         }
+          public function getFichesFraisUtilisateurSuiviePaiement($idVisiteur){
+             $req = "SELECT * FROM fichefrais WHERE idEtat = 'VA' || idEtat = 'RB' AND idVisiteur = '".$idVisiteur."'";
+             $res = $this->monPdo->query($req);
+             return $res;
+        
+        }
+       
        
 }
 ?>

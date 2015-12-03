@@ -5,21 +5,23 @@
         <legend>Visiteur à sélectionner: </legend>
         <div class="form-group">
         <label for="visiteur">Visiteur :</label> 
-        <select id="lstVisit" name="lstVisit" class="form-control">
+        <select id="lstVisit" name="idVisiteur" class="form-control">
       
 		<?php	
+                 
            foreach ($lesVisiteurs as $unVisiteur)
 			{
-			        $visiteur = $unVisiteur['nom'];
+			         
 				
-				if($visiteur == $visiteurASelectionner){
+				if($unVisiteur['nom'] == $visiteur ){
 				?>
-				<option selected value="<?php echo $visiteur ?>"><?php echo  $visiteur ?> </option>
+				<option selected value="<?php echo $unVisiteur['id'] ?>"><?php echo  $unVisiteur['nom'] ?> </option>
 				<?php 
 				}
 				else{ ?>
-				<option value="<?php echo $visiteur ?>"><?php echo  $visiteur ?> </option>
+				<option value="<?php echo $unVisiteur['id'] ?>"><?php echo  $unVisiteur['nom'] ?> </option>
 				<?php 
+                               // $visiteur = $unVisiteur['nom'];
 				}
 			
 			}
