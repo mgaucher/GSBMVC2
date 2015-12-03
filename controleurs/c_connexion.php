@@ -12,47 +12,39 @@ switch($action){
 		$login = $_REQUEST['login'];
 		$mdp = md5($_REQUEST['mdp']);
                 
-                
-                
-		
-                
-                
-                
-//            $type=$pdo->getValeurType($_SESSION['id']);
-            $type = 'co';
-             if($type == 'vi')
+                               
+            $info =$pdo->getInfosVisiteur($login,$mdp);
+           
+             if($info['type']== 'vi')
              {
                  $visiteur = $pdo->getConnexionVisiteur($login,$mdp);
-		if(!is_array( $visiteur)){
-			ajouterErreur("Login ou mot de passe incorrect","connexion");
-			include("vues/v_connexion.php");
-		}
-		else{
-			$id = $visiteur['id'];
+                        $id = $visiteur['id'];
 			$nom =  $visiteur['nom'];
 			$prenom = $visiteur['prenom'];
+                        $identite='Visteur médical';
+                        $derniereco = $visiteur['derniereco'];
 			connecter($id,$nom,$prenom);
 			include("vues/v_sommaire.php");
-		}
-		break;
-             } 
-               
-           else{
-               $comptable = $pdo->getConnexionComptable($login,$mdp);
-                if(!is_array( $comptable)){
-			ajouterErreur("Login ou mot de passe incorrect","connexion");
-			include("vues/v_connexion.php");
-		}
-		else{
+		
+		
+             }    
+             else if ($info['type']== 'co'){
+                 $comptable = $pdo->getConnexionComptable($login,$mdp);
 			$id = $comptable['id'];
 			$nom =  $comptable['nom'];
 			$prenom = $comptable['prenom'];
+                        $identite='comptable';
+                        $derniereco = $comptable['derniereco'];
 			connecter($id,$nom,$prenom);
 			include("vues/v_sommaire.php");
-		}
-		break;
+		
+		
                 }
-                 
+            else{               
+			ajouterErreur("Login ou mot de passe incorrect","connexion");
+            }
+            $pdo->UpdateDate($id);
+            break;
 	}
         
 	default :{

@@ -4,7 +4,8 @@
     <nav class='col-md-2'>
         
         <h4>
-            <?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
+            <?php echo $_SESSION['prenom']."  ".$_SESSION['nom']."<h6><i>Vous ètes connecter en tant que :</i></h6> " .$identite. "<br><h6><i>Vous vous est connectez pour la dernière fois :</i></h6>" .$derniereco."<br>"?>
+            
         </h4>
            
         <ul class="list-unstyled">
