@@ -60,7 +60,13 @@ class PdoGsb{
 		return $ligne;
 	}
         
-        
+        public function getValeurType($id)
+        {
+            $req="select type from connection where id='$id'";
+            $rs = $this->monPdo->query($req);
+            $ligne = $rs->fetch();
+            return $ligne;
+        }
         public function getConnexionVisiteur($login, $mdp)
         {
             $req= "select connection.login as login, connection.mdp as mdp, visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from 

@@ -14,10 +14,15 @@ switch($action){
                 
                 
                 
-		$visiteur = $pdo->getConnexionVisiteur($login,$mdp);
+		
                 
                 
                 
+//            $type=$pdo->getValeurType($_SESSION['id']);
+            $type = 'co';
+             if($type == 'vi')
+             {
+                 $visiteur = $pdo->getConnexionVisiteur($login,$mdp);
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect","connexion");
 			include("vues/v_connexion.php");
@@ -30,10 +35,10 @@ switch($action){
 			include("vues/v_sommaire.php");
 		}
 		break;
-                
-                /*
-                 * 
+             } 
+               
            else{
+               $comptable = $pdo->getConnexionComptable($login,$mdp);
                 if(!is_array( $comptable)){
 			ajouterErreur("Login ou mot de passe incorrect","connexion");
 			include("vues/v_connexion.php");
@@ -47,7 +52,7 @@ switch($action){
 		}
 		break;
                 }
-                 */
+                 
 	}
         
 	default :{
