@@ -30,6 +30,24 @@ switch($action){
 			include("vues/v_sommaire.php");
 		}
 		break;
+                
+                /*
+                 * 
+           else{
+                if(!is_array( $comptable)){
+			ajouterErreur("Login ou mot de passe incorrect","connexion");
+			include("vues/v_connexion.php");
+		}
+		else{
+			$id = $comptable['id'];
+			$nom =  $comptable['nom'];
+			$prenom = $comptable['prenom'];
+			connecter($id,$nom,$prenom);
+			include("vues/v_sommaire.php");
+		}
+		break;
+                }
+                 */
 	}
         
 	default :{
