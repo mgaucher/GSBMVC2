@@ -59,8 +59,29 @@ class PdoGsb{
 		$ligne = $rs->fetch();
 		return $ligne;
 	}
-
+        
+        
+        public function getConnexionVisiteur($login, $mdp)
+        {
+            $req= "select connection.login as login, connection.mdp as mdp, visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from 
+                    connection INNER JOIN visiteur ON connection.id = visiteur.id
+                    where connection.login='$login' and connection.mdp='$mdp'";
+            $rs = $this->monPdo->query($req);
+            $ligne = $rs->fetch();
+            return $ligne;
+        }
+        
+        public function getConnexionComptable($login, $mdp)
+        {
+            $req= "select connection.login as login, connection.mdp as mdp, comptable.id as id, comptable.nom as nom, comptable.prenom as prenom from 
+                    connection INNER JOIN comptable ON connection.id = comptable.id
+                    where connection.login='$login' and connection.mdp='$mdp'";
+            $rs = $this->monPdo->query($req);
+            $ligne = $rs->fetch();
+            return $ligne;
+        }
 /**
+ * 
  * Retourne sous forme d'un tableau associatif toutes les lignes de frais hors forfait
  * concernées par les deux arguments
  
@@ -310,5 +331,18 @@ class PdoGsb{
 	return $res;
         
         }
+//        affichage pour un visiteur des fiches de frais des 12 
+//        derniers mois qui sontvalidées ou remboursées 
+        public function getListeVisiteur(){
+            //VA RB
+            $req ="select  visiteur.nom , fichefrais.idVisiteur,fichefrais.mois "
+                    . "from Etat inner join fichefrais on Etat.id = fichefrais.idEtat"
+                    . " inner join visiteur on fichefrais.idVisiteur = visiteur.id where fichefrais.idEtat ='VA' OR fichefrais.idEtat ='RB'"
+                    . "group by visiteur.nom";
+            $res = $this->monPdo->query($req);
+		$laLigne = $res->fetchAll();
+		return $laLigne;
+        }
+       
 }
 ?>

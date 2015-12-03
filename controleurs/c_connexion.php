@@ -10,8 +10,14 @@ switch($action){
 	}
 	case 'valideConnexion':{
 		$login = $_REQUEST['login'];
-		$mdp = $_REQUEST['mdp'];
-		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
+		$mdp = md5($_REQUEST['mdp']);
+                
+                
+                
+		$visiteur = $pdo->getConnexionVisiteur($login,$mdp);
+                
+                
+                
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect","connexion");
 			include("vues/v_connexion.php");
@@ -25,6 +31,7 @@ switch($action){
 		}
 		break;
 	}
+        
 	default :{
 		include("vues/v_connexion.php");
 		break;
