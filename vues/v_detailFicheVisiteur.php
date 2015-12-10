@@ -1,6 +1,5 @@
 <h2>Detail fiche visiteur</h2>
 
-
 <table class="table table-bordered">
     <caption>Eléments forfaitisés </caption>
     <thead>
@@ -64,4 +63,7 @@ if (!empty($lesFraisHorsForfait)) {
             echo "<strong>Vous n'avez pas d'élément hors forfait pour ce mois.</strong>";
         }
         ?>
+<a href="index.php?uc=suivrePaiement&action=suivrePaiement">Retour</a>
+	
+
 </div>

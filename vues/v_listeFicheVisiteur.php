@@ -2,13 +2,12 @@
 <form class="form-inline" action="index.php?uc=suivrePaiement&action=detailFicheVisiteur" method="post">   
     <div class="corpsForm">  
         <fieldset>	 
-            <legend>Visiteur à sélectionner: </legend>
+            <legend>Fiche à sélectionner: </legend>
             <div class="form-group">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th> mois</th>
-                            <th >nbJustificatifs</th>
+                            <th> mois</th>   
                             <th >montantValide</th>  
                             <th>date Modif</th>  
                             <th>Etat</th> 
@@ -17,32 +16,35 @@
                     </thead>
                     <tbody>  
                         <?php
-                        foreach ($listeFicheVisiteur as $uneFicheVisiteur) {
+                        
+                         
+                       foreach ($listeFicheVisiteur as $uneFicheVisiteur) 
+                            {
                             ?>
                             <tr>
 
 
     <?php
+    
     $idVisiteur = $uneFicheVisiteur['idVisiteur'];
-    $mois = $uneFicheVisiteur['mois'];
-    $nbJustificatifs = $uneFicheVisiteur['nbJustificatifs'];
+    $mois = $uneFicheVisiteur['mois']; 
     $montantValide = $uneFicheVisiteur['montantValide'];
     $dateModif = $uneFicheVisiteur['dateModif'];
     $etat = $uneFicheVisiteur['idEtat'];
     ?>
 
-                                <td><?php echo $mois ?></td>
-                                <td><?php echo $nbJustificatifs ?></td>
+                                <td><?php echo $mois ?></td>    
                                 <td><?php echo $montantValide ?></td>
                                 <td><?php echo $dateModif ?></td>
                                 <td><?php echo $etat ?></td>
                         <input type="hidden" name="idVisiteur" value="<?php echo $idVisiteur ?>">
-                        <input type="hidden" name="mois" value="<?php echo $mois ?>">
-                        <td> <button type="submit" class="btn btn-primary" >Voir les détails</button>  </td>
+                         <td> <button type="submit" class="btn btn-primary" name="mois" value="<?php echo $uneFicheVisiteur['mois'] ?>">Voir les détails</button>  </td>
+                                                                                               
 
 
                         </tr>
     <?php
+  
 }
 ?>
 

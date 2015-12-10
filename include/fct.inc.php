@@ -20,10 +20,14 @@ function estConnecte(){
  * @param $nom
  * @param $prenom
  */
-function connecter($id,$nom,$prenom){
+function connecter($id,$nom,$prenom,$identite,$derniereco){
 	$_SESSION['idVisiteur']= $id; 
 	$_SESSION['nom']= $nom;
 	$_SESSION['prenom']= $prenom;
+        $_SESSION['identite'] = $identite;
+        $_SESSION['derniereco'] = $derniereco;
+        
+        
 }
 /**
  * Détruit la session active
@@ -200,4 +204,17 @@ function nbErreurs(){
 	   return count($_REQUEST['erreurs']);
 	}
 }
+function afficheValidationVisiteur($login, $mdp, $id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
+    
+    echo " login : ".$login."<br>Mot de passe : ".$mdp."<BR>";
+    echo " Prenom : ".$prenom."<BR>";
+    echo " Nom : ".$nom."<BR>";
+    echo " Nom : ".$adresse."<BR>";
+    echo " Nom : ".$cp."<BR>";
+    echo " Nom : ".$ville."<BR>";
+    echo " Nom : ".$dateembauche."<BR>";
+    echo " login : ".$login."<br>Mot de passe : ".$mdp."<BR>";
+    echo "Votre nouveau visiteur a bien été enregistrer ";  
+}
+
 ?>
