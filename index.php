@@ -26,6 +26,10 @@ switch($uc){
         case 'suivrePaiement' :{
                 include("controleurs/c_suivrePaiement.php");break;         
         }
+        
+        case 'inscriptionNouveauVisiteur' :{
+                include("controleurs/c_inscriptionVisiteur.php");break;         
+        }
 }
 include("vues/v_pied.php") ;
 ?>

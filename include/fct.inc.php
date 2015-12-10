@@ -20,10 +20,14 @@ function estConnecte(){
  * @param $nom
  * @param $prenom
  */
-function connecter($id,$nom,$prenom){
+function connecter($id,$nom,$prenom,$identite,$derniereco){
 	$_SESSION['idVisiteur']= $id; 
 	$_SESSION['nom']= $nom;
 	$_SESSION['prenom']= $prenom;
+        $_SESSION['identite'] = $identite;
+        $_SESSION['derniereco'] = $derniereco;
+        
+        
 }
 /**
  * Détruit la session active
@@ -200,4 +204,6 @@ function nbErreurs(){
 	   return count($_REQUEST['erreurs']);
 	}
 }
+
+
 ?>

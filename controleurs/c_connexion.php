@@ -24,9 +24,11 @@ switch($action){
 			$prenom = $visiteur['prenom'];
                         $identite='Visteur médical';
                         $derniereco = $visiteur['derniereco'];
-			connecter($id,$nom,$prenom);
-			include("vues/v_sommaire.php");
-		
+			 
+			connecter($id,$nom,$prenom,$identite,$derniereco);
+			
+                        $pdo->UpdateDate($id);
+                        include("vues/v_sommaire.php");
 		
              }    
              else if ($info['type']== 'co'){
@@ -36,15 +38,17 @@ switch($action){
 			$prenom = $comptable['prenom'];
                         $identite='comptable';
                         $derniereco = $comptable['derniereco'];
-			connecter($id,$nom,$prenom);
-			include("vues/v_sommaire.php");
-		
+                        
+			connecter($id,$nom,$prenom,$identite,$derniereco);
+			
+                        $pdo->UpdateDate($id);
+                        include("vues/v_sommaire.php");
 		
                 }
             else{               
 			ajouterErreur("Login ou mot de passe incorrect","connexion");
             }
-            $pdo->UpdateDate($id);
+            
             break;
 	}
         

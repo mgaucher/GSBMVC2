@@ -60,6 +60,13 @@ class PdoGsb{
 		return $ligne;
 	}
         
+        public function getRecuperationIdVisiteur($id){
+            $req = "select id from visiteur where visiteur = $id";
+            $rs = $this->monPdo->query($req);
+            $ligne = $rs->fetch();
+            return $ligne;
+        }
+        
         
         public function getConnexionVisiteur($login, $mdp)
         {
@@ -87,6 +94,20 @@ class PdoGsb{
                    SET derniereco = NOW() 
                    where id='$id'";
             $rs = $this->monPdo->exec($req);
+        }
+//        ajoute dun visiteur 
+        function inscriptionVisiteur($id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
+           
+            $req = " INSERT INTO Visiteur (id, nom,prenom,adresse,cp,ville, dateEmbauche)
+                     VALUES ('$id', '$nom', '$prenom','$adresse','$cp','$ville','$dateEmbauche')";
+            $rs = $this->monPdo->query($req);
+        }
+        
+        function insertionVisiteur($login, $mdp, $id){
+            
+            $req = " INSERT INTO connection (login, mdp,id,type)
+                     VALUES ('$login', md5('$mdp'), '$id', 'vi')";
+            $rs = $this->monPdo->query($req);
         }
 /**
  * 
