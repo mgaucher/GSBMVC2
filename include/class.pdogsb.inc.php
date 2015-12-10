@@ -110,27 +110,7 @@ class PdoGsb{
             $rs = $this->monPdo->query($req);
         }
         
-        public function UpdateDate($id)
-        {
-            $req= "UPDATE connection
-                   SET derniereco = NOW() 
-                   where id='$id'";
-            $rs = $this->monPdo->exec($req);
-        }
-//        ajoute dun visiteur 
-        function inscriptionVisiteur($id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
-           
-            $req = " INSERT INTO Visiteur (id, nom,prenom,adresse,cp,ville, dateEmbauche)
-                     VALUES ('$id', '$nom', '$prenom','$adresse','$cp','$ville','$dateEmbauche')";
-            $rs = $this->monPdo->query($req);
-        }
-        
-        function insertionVisiteur($login, $mdp, $id){
-            
-            $req = " INSERT INTO connection (login, mdp,id,type)
-                     VALUES ('$login', md5('$mdp'), '$id', 'vi')";
-            $rs = $this->monPdo->query($req);
-        }
+       
 /**
  * 
  * Retourne sous forme d'un tableau associatif toutes les lignes de frais hors forfait
@@ -177,7 +157,7 @@ class PdoGsb{
  * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
 */
 	public function getLesFraisForfait($idVisiteur, $mois){
-		$req = "select fraisforfait.id as idfrais, fraisforfait.libelle as libelle, 
+		$req = "select fraisforfait.id as idfrais, fraisforfait.libelle as libelle, fraisforfait.montant as montant,
 		lignefraisforfait.quantite as quantite from lignefraisforfait inner join fraisforfait 
 		on fraisforfait.id = lignefraisforfait.idfraisforfait
 		where lignefraisforfait.idvisiteur ='$idVisiteur' and lignefraisforfait.mois='$mois' 
@@ -395,6 +375,7 @@ class PdoGsb{
              return $res;
         
         }
+       
        
        
 }
