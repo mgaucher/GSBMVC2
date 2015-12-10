@@ -6,32 +6,32 @@
           <label>Les visiteurs ayant des fiches frais à l'état "clôturée" :</label>
           <br/>
           
-          <table>
+          <table class="table table-bordered">
               <thead>
-                  <tr>Nom d'utilisateur :</tr>
-                  <tr>Mois :</tr>
-                  <tr></tr>
+                  <th>Nom d'utilisateur :</th>
+                  <th>Mois :</th>
+                  <th></th>
               </thead>
               
+              <br/>
+              
+              <tbody>
            <?php
-           $var = "";        
+           $var = "";
+           
          foreach ( $visiteursAvecFicheCloturee as $unVisiteur ) 
 	{           
-             echo "<tbody>";
+            echo "<tbody class='ligneFicheFraisForfaisCloturee'>";
             if ($var != $unVisiteur['id'])
-            {
-                echo $unVisiteur['id']." ".$unVisiteur['nom']." ".$unVisiteur['prenom']."<br/>"; 
-                echo "fiche de frais cloturée : <br/>";
-                
-                echo "<td>".$unVisiteur['nom']."</td>";
-               
+            {                
+                echo "<td>".$unVisiteur['nom']."</td>"; 
             }
             
              else 
              {
                  echo "<td></td>";
              }
-            echo "<td>".$unVisiteur['mois']."</td><br/>";
+            echo "<td>".$unVisiteur['mois']."</td>";
             
             //parcourir les lignes résultats tant que le visiteur a encore des fiches frais cloturées.
             $var = $unVisiteur['id'];
@@ -40,7 +40,7 @@
             echo "</tbody>";
         }
             ?>
-           
+           </tbody>
           </table>
               
 <?php 
