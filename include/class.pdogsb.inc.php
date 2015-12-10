@@ -53,23 +53,17 @@ class PdoGsb{
  * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
 */
 	public function getInfosVisiteur($login, $mdp){
-		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from visiteur 
-		where visiteur.login='$login' and visiteur.mdp='$mdp'";
+		$req = "select * from connection
+		where login='$login' and mdp='$mdp'";
 		$rs = $this->monPdo->query($req);
 		$ligne = $rs->fetch();
 		return $ligne;
 	}
         
-        public function getValeurType($id)
-        {
-            $req="select type from connection where id='$id'";
-            $rs = $this->monPdo->query($req);
-            $ligne = $rs->fetch();
-            return $ligne;
-        }
+        
         public function getConnexionVisiteur($login, $mdp)
         {
-            $req= "select connection.login as login, connection.mdp as mdp, visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from 
+            $req= "select connection.login as login, connection.mdp as mdp, connection.derniereco as derniereco, visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom  from 
                     connection INNER JOIN visiteur ON connection.id = visiteur.id
                     where connection.login='$login' and connection.mdp='$mdp'";
             $rs = $this->monPdo->query($req);
@@ -79,12 +73,20 @@ class PdoGsb{
         
         public function getConnexionComptable($login, $mdp)
         {
-            $req= "select connection.login as login, connection.mdp as mdp, comptable.id as id, comptable.nom as nom, comptable.prenom as prenom from 
+            $req= "select connection.login as login, connection.mdp as mdp,connection.derniereco as derniereco, comptable.id as id, comptable.nom as nom, comptable.prenom as prenom from 
                     connection INNER JOIN comptable ON connection.id = comptable.id
                     where connection.login='$login' and connection.mdp='$mdp'";
             $rs = $this->monPdo->query($req);
             $ligne = $rs->fetch();
             return $ligne;
+        }
+        
+        public function UpdateDate($id)
+        {
+            $req= "UPDATE connection
+                   SET derniereco = NOW() 
+                   where id='$id'";
+            $rs = $this->monPdo->exec($req);
         }
 /**
  * 

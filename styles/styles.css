@@ -8,6 +8,10 @@ body{
         background-color:white;
         border : 0.2em solid black;
  }
+ 
+ .ligneFicheFraisForfaisCloturee{
+     background-color: rgba(100,200,200,.7);
+ }
 
 #contenu{
 	border: none;
