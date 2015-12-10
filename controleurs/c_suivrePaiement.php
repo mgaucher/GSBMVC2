@@ -1,6 +1,8 @@
 <?php
 include("vues/v_sommaire.php");
+
 $idVisiteur = $_SESSION['idVisiteur'];
+
 $action = $_REQUEST['action'];
 switch($action){
 	case 'suivrePaiement':{
@@ -9,7 +11,7 @@ switch($action){
           include("vues/v_listeVisiteur.php");
           break;  
         }
-        case 'voirEtatfrais': {
+        case 'voirFicheFrais': {
             $lesVisiteurs=$pdo->getListeVisiteur();
             $leVisiteur = $_REQUEST['idVisiteur'];  
             $listeFicheVisiteur=$pdo->getFichesFraisUtilisateurSuiviePaiement($leVisiteur);
@@ -22,9 +24,9 @@ switch($action){
             $lesVisiteurs=$pdo->getListeVisiteur();
             $leVisiteur = $_REQUEST['idVisiteur']; 
             $leMois = $_REQUEST['mois'];
-                $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$leMois);
-		$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$leMois);
-		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$leMois);
+                $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur,$leMois);
+		$lesFraisForfait= $pdo->getLesFraisForfait($leVisiteur,$leMois);
+		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur,$leMois);
                 $libEtat = $lesInfosFicheFrais['libEtat'];
 		$montantValide = $lesInfosFicheFrais['montantValide'];
 		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];

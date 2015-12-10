@@ -60,6 +60,13 @@ class PdoGsb{
 		return $ligne;
 	}
         
+        public function getRecuperationIdVisiteur($id){
+            $req = "select id from visiteur";
+            $rs = $this->monPdo->query($req);
+            $ligne = $rs->fetch();
+            return $ligne;
+        }
+        
         
         public function getConnexionVisiteur($login, $mdp)
         {
@@ -87,6 +94,20 @@ class PdoGsb{
                    SET derniereco = NOW() 
                    where id='$id'";
             $rs = $this->monPdo->exec($req);
+        }
+//        ajoute dun visiteur 
+        function inscriptionVisiteur($id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
+           
+            $req = " INSERT INTO Visiteur (id, nom,prenom,adresse,cp,ville, dateEmbauche)
+                     VALUES ('$id', '$nom', '$prenom','$adresse','$cp','$ville','$dateEmbauche')";
+            $rs = $this->monPdo->query($req);
+        }
+        
+        function insertionVisiteur($login, $mdp, $id){
+            
+            $req = " INSERT INTO connection (login, mdp,id,type)
+                     VALUES ('$login', md5('$mdp'), '$id', 'vi')";
+            $rs = $this->monPdo->query($req);
         }
 /**
  * 
@@ -341,13 +362,13 @@ class PdoGsb{
             $req ="select visiteur.id, visiteur.nom , fichefrais.idVisiteur,fichefrais.mois "
                     . "from Etat inner join fichefrais on Etat.id = fichefrais.idEtat"
                     . " inner join visiteur on fichefrais.idVisiteur = visiteur.id where fichefrais.idEtat ='VA' OR fichefrais.idEtat ='RB'"
-                    . "group by visiteur.nom";
+                    . "ORDER BY `fichefrais`.`mois` DESC LIMIT 0 , 12";
             $res = $this->monPdo->query($req);
 		$laLigne = $res->fetchAll();
 		return $laLigne;
         }
           public function getFichesFraisUtilisateurSuiviePaiement($idVisiteur){
-             $req = "SELECT * FROM fichefrais WHERE idEtat = 'VA' || idEtat = 'RB' AND idVisiteur = '".$idVisiteur."'";
+             $req = "SELECT * FROM fichefrais WHERE idVisiteur = '".$idVisiteur."' AND (idEtat = 'VA' || idEtat = 'RB') ORDER BY `fichefrais`.`mois` DESC LIMIT 0 , 12";
              $res = $this->monPdo->query($req);
              return $res;
         
