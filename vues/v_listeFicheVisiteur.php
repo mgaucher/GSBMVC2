@@ -15,9 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        <?php
-                        
-                         
+                        <?php                      
                        foreach ($listeFicheVisiteur as $uneFicheVisiteur) 
                             {
                             ?>

@@ -63,7 +63,7 @@ if (!empty($lesFraisHorsForfait)) {
             echo "<strong>Vous n'avez pas d'élément hors forfait pour ce mois.</strong>";
         }
         ?>
-<a href="index.php?uc=suivrePaiement&action=suivrePaiement">Retour</a>
+<a href="index.php?uc=suivrePaiement&action=voirFicheFrais" class="btn btn-primary btn-primary">Retour</a>
 	
 
 </div>

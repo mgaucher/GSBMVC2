@@ -9,39 +9,42 @@
         </h4>
            
         <ul class="list-unstyled">
-			
+            
+		<?php
+              
+                if($_SESSION['identite'] =='Visteur médical')
+            { ?>
            <li>
               <a href="index.php?uc=gererFrais&action=saisirFrais" title="Saisie fiche de frais ">Saisie fiche de frais</a>
            </li>
            <li>
               <a href="index.php?uc=etatFrais&action=selectionnerMois" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
            </li>
-           
+           <?php
+           }?>
            <!-- Si l'utilisateur est un comptable alors afficher cette fonctionnalité -->
            <?php 
-            if($_SESSION['prenom'])
+            if($_SESSION['identite'] =='comptable')
             {
            ?>
            
            <li>
               <a href="index.php?uc=validerFrais&action=afficherFormulaireValidationFicheFrais" title="Validation de fiche de frais">Valider fiche de frais</a>
            </li>
-           
+             <!-- Si l'utilisateur est un comptable alors afficher cette fonctionnalité -->
            <?php        
-          }
-           ?>          
-           <?php
-          // $info =$pdo->getInfosVisiteur($login,$mdp);
+          }       
            if($_SESSION['identite'] == 'comptable')
            {
            ?>
            <li>
               <a href="index.php?uc=inscriptionNouveauVisiteur&action=demandeInscription" title="inscription">Inscription nouveau visiteur</a>
            </li>
+                          <!-- Si l'utilisateur est un comptable alors afficher cette fonctionnalité -->
+
            <?php
            }
-           ?>
-            <?php 
+         
            if($_SESSION['identite'] == "comptable")
           {
                ?>

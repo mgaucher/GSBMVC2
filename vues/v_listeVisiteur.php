@@ -4,9 +4,12 @@ if (isset($_POST["idVisiteur"]))
 {
    
     $visiteur = $_POST["idVisiteur"];
-   
-
 }
+
+ else if (isset($_SESSION['laFiche']))
+ {
+     $visiteur = $_SESSION['laFiche'];
+ }
  
 ?> 
 <h2>Suivie paiement fiche frais</h2>

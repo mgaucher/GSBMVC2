@@ -154,10 +154,17 @@ table caption {
   float : left;
 
 }
-#FicheSuppr{
-    color : red;
+#FraisSuppr{
+    color:#ccc;
+     text-shadow:0 -1px 0 black;  
+     background: #8A0808;
+    
+}
+#FraisSuppr:hover,#FraisSuppr:focus{
+     background:#DF0101;
+     box-shadow:0 1px 0 rgba(255,255,255,.4);
 }
 
 #motifSuppr{
- 
+    font-size:50px;
 }
