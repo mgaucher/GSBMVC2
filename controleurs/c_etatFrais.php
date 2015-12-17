@@ -28,6 +28,7 @@ switch ($action) {
             $idEtat = $lesInfosFicheFrais['idEtat'];
             $libEtat = $lesInfosFicheFrais['libEtat'];
             $montantValide = 0;
+            // Calcul les montants frais si la fiche est à l'état CL ou CR
             if ($idEtat == 'CL' || $idEtat == 'CR') {
                 foreach ($lesFraisForfait as $montantfrais) {
                     $montantValide += $montantfrais['montant'] * $montantfrais['quantite'];
