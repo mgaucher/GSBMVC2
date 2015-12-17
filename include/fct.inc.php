@@ -205,5 +205,7 @@ function nbErreurs(){
 	}
 }
 
+//création de fonction pour verifier le formulaire et surligner les champs non valide 
+    
 
 ?>

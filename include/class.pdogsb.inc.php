@@ -61,13 +61,13 @@ class PdoGsb{
 	}
         
         public function getRecuperationIdVisiteur($id){
-            $req = "select id from visiteur where visiteur = $id";
+            $req = "select id from visiteur where id = '$id'";
             $rs = $this->monPdo->query($req);
             $ligne = $rs->fetch();
             return $ligne;
         }
         
-        
+//        connexion avec un visiteur
         public function getConnexionVisiteur($login, $mdp)
         {
             $req= "select connection.login as login, connection.mdp as mdp, connection.derniereco as derniereco, visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom  from 
@@ -77,7 +77,7 @@ class PdoGsb{
             $ligne = $rs->fetch();
             return $ligne;
         }
-        
+//        connexion avec un comptable
         public function getConnexionComptable($login, $mdp)
         {
             $req= "select connection.login as login, connection.mdp as mdp,connection.derniereco as derniereco, comptable.id as id, comptable.nom as nom, comptable.prenom as prenom from 
@@ -88,6 +88,8 @@ class PdoGsb{
             return $ligne;
         }
         
+        
+//        mise a jour de la date dans la base de donnée
         public function UpdateDate($id)
         {
             $req= "UPDATE connection
@@ -95,28 +97,7 @@ class PdoGsb{
                    where id='$id'";
             $rs = $this->monPdo->exec($req);
         }
-//        ajoute dun visiteur 
-        function inscriptionVisiteur($id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
-           
-            $req = " INSERT INTO Visiteur (id, nom,prenom,adresse,cp,ville, dateEmbauche)
-                     VALUES ('$id', '$nom', '$prenom','$adresse','$cp','$ville','$dateEmbauche')";
-            $rs = $this->monPdo->query($req);
-        }
-        
-        function insertionVisiteur($login, $mdp, $id){
-            
-            $req = " INSERT INTO connection (login, mdp,id,type)
-                     VALUES ('$login', md5('$mdp'), '$id', 'vi')";
-            $rs = $this->monPdo->query($req);
-        }
-        
-        public function UpdateDate($id)
-        {
-            $req= "UPDATE connection
-                   SET derniereco = NOW() 
-                   where id='$id'";
-            $rs = $this->monPdo->exec($req);
-        }
+       
 //        ajoute dun visiteur 
         function inscriptionVisiteur($id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
            
@@ -395,6 +376,8 @@ class PdoGsb{
              return $res;
         
         }
+        
+        
        
        
 }

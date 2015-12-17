@@ -1,7 +1,9 @@
-<div class="row">
+<h2>Inscription visisteur</h2>
+<script src="./boostrap/js/bootstrap.js"></script>    
                
-    <div class ="col-md-12 col-md-offset-2" id="contenu">
+    <div class ="col-md-12 col-md-offset-2" >
 <?php 
+
 if (isset($_REQUEST['erreurs'])) 
     {    
         foreach($_REQUEST['erreurs'] as $erreur)
@@ -10,7 +12,7 @@ if (isset($_REQUEST['erreurs']))
             }
      }
 ?>
-      <form class="form-vertical" method="POST" action="index.php?uc=inscriptionNouveauVisiteur&action=valideInscription">
+      <form class="form-vertical" method="POST" action="index.php?uc=inscriptionNouveauVisiteur&action=valideInscription" >
          <fieldset>
              <legend>Veuillez inscrire les informations du visiteur: ( * : champ obligatoire )</legend>
    	 <div class="form-group"> 	
@@ -25,7 +27,7 @@ if (isset($_REQUEST['erreurs']))
 	 <label for="nom">Nom *</label>
          <div class="row">
              <div class="col-xs-12 col-sm-6 col-md-4">
-             <input class="form-control" id="nom"  type="text"  name="nom" size="30" maxlength="45" placeholder="nom">
+                 <input class="form-control" id="nom"  type="text"  name="nom" size="30" maxlength="45" placeholder="nom">
             </div>
          </div>
          </div>
@@ -54,21 +56,20 @@ if (isset($_REQUEST['erreurs']))
             <label for="ville">Ville *</label>
          <div class="row">
              <div class="col-xs-12 col-sm-6 col-md-4">
-             <input class="form-control" id="ville"  type="text"  name="ville" size="30" maxlength="45" placeholder="ville">
+             <input  class="form-control" id="ville"  type="text"  name="ville" size="30" maxlength="45" placeholder="ville">
             </div>
          </div>
             <label for="dateembauche">Date Embauche *</label>
          <div class="row">
              <div class="col-xs-12 col-sm-6 col-md-4">
-             <input class="form-control" id="dateEmbauche"  type="text"  name="dateEmbauche" size="30" maxlength="45" placeholder="0000-00-00">
+             <input class="form-control" id="dateEmbauche"  type="date"  name="dateEmbauche" size="30" maxlength="45" placeholder="0000-00-00">
             </div>
          </div>
             <BR>
-          <button type="submit" class="btn btn-primary">Valider</button>
+            <button type="submit" class="btn btn-primary" onSubmit=" return verif_formulaire()">Valider</button>
           <button type="reset" class="btn btn-primary">annuler</button>
-          <button type="reset" class="btn btn-primary">Retour</button>
          </fieldset>
       </form>
 
-    </div>
+   
 </div>
