@@ -13,7 +13,16 @@ switch($action){
         }
         case 'voirFicheFrais': {
             $lesVisiteurs=$pdo->getListeVisiteur();
-            $leVisiteur = $_REQUEST['idVisiteur'];  
+           if(isset( $_REQUEST['idVisiteur']))
+            {
+                 $leVisiteur = $_REQUEST['idVisiteur']; 
+            }
+            else
+            {
+                 $leVisiteur = $_SESSION['laFiche'];
+            }
+       
+            $_SESSION['laFiche'] = $leVisiteur;
             $listeFicheVisiteur=$pdo->getFichesFraisUtilisateurSuiviePaiement($leVisiteur);
             
             include("vues/v_listeVisiteur.php");

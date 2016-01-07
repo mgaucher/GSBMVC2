@@ -204,17 +204,8 @@ function nbErreurs(){
 	   return count($_REQUEST['erreurs']);
 	}
 }
-function afficheValidationVisiteur($login, $mdp, $id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
+
+//création de fonction pour verifier le formulaire et surligner les champs non valide 
     
-    echo " login : ".$login."<br>Mot de passe : ".$mdp."<BR>";
-    echo " Prenom : ".$prenom."<BR>";
-    echo " Nom : ".$nom."<BR>";
-    echo " Nom : ".$adresse."<BR>";
-    echo " Nom : ".$cp."<BR>";
-    echo " Nom : ".$ville."<BR>";
-    echo " Nom : ".$dateembauche."<BR>";
-    echo " login : ".$login."<br>Mot de passe : ".$mdp."<BR>";
-    echo "Votre nouveau visiteur a bien été enregistrer ";  
-}
 
 ?>

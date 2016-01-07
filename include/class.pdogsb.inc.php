@@ -61,13 +61,13 @@ class PdoGsb{
 	}
         
         public function getRecuperationIdVisiteur($id){
-            $req = "select id from visiteur";
+            $req = "select id from visiteur where id = '$id'";
             $rs = $this->monPdo->query($req);
             $ligne = $rs->fetch();
             return $ligne;
         }
         
-        
+//        connexion avec un visiteur
         public function getConnexionVisiteur($login, $mdp)
         {
             $req= "select connection.login as login, connection.mdp as mdp, connection.derniereco as derniereco, visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom  from 
@@ -77,7 +77,7 @@ class PdoGsb{
             $ligne = $rs->fetch();
             return $ligne;
         }
-        
+//        connexion avec un comptable
         public function getConnexionComptable($login, $mdp)
         {
             $req= "select connection.login as login, connection.mdp as mdp,connection.derniereco as derniereco, comptable.id as id, comptable.nom as nom, comptable.prenom as prenom from 
@@ -88,6 +88,8 @@ class PdoGsb{
             return $ligne;
         }
         
+        
+//        mise a jour de la date dans la base de donnée
         public function UpdateDate($id)
         {
             $req= "UPDATE connection
@@ -95,6 +97,7 @@ class PdoGsb{
                    where id='$id'";
             $rs = $this->monPdo->exec($req);
         }
+       
 //        ajoute dun visiteur 
         function inscriptionVisiteur($id, $nom, $prenom, $adresse, $cp, $ville, $dateEmbauche){
            
@@ -163,7 +166,7 @@ class PdoGsb{
  * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
 */
 	public function getLesFraisForfait($idVisiteur, $mois){
-		$req = "select fraisforfait.id as idfrais, fraisforfait.libelle as libelle, 
+		$req = "select fraisforfait.id as idfrais, fraisforfait.libelle as libelle, fraisforfait.montant as montant,
 		lignefraisforfait.quantite as quantite from lignefraisforfait inner join fraisforfait 
 		on fraisforfait.id = lignefraisforfait.idfraisforfait
 		where lignefraisforfait.idvisiteur ='$idVisiteur' and lignefraisforfait.mois='$mois' 
@@ -419,6 +422,9 @@ class PdoGsb{
              return $res;
         
         }
+        
+        
+       
        
        
 }

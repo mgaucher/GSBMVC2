@@ -15,6 +15,46 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
  * ======================================================================== */
 
 
+function verif_formulaire()
+{
+ if(document.formulaire.id.value == "")  {
+   alert("Veuillez entrer votre id");
+   document.formulaire.id.focus();
+   return false;
+  }
+ if(document.formulaire.nom.value == "") {
+   alert("Veuillez entrer votre nom");
+   document.formulaire.nom.focus();
+   return false;
+  }
+ if(document.formulaire.prenom.value == "") {
+   alert("Veuillez entrer votre prenom");
+   document.formulaire.prenom.focus();
+   return false;
+  }
+ if(document.formulaire.adresse.value=="") {
+   alert("entrez une adresse");
+   document.formulaire.adresse.focus();
+   return false;
+  }
+ if(document.formulaire.cp.value == "") {
+   alert("Veuillez entrer votre cp");
+   document.formulaire.cp.focus();
+   return false;
+  }
+ var chkZ = 1;
+ for(i=0;i<document.formulaire.age.value.length;++i)
+   if(document.formulaire.cp.value.charAt(i) < "0"
+   || document.formulaire.cp.value.charAt(i) > "9")
+     chkZ = -1;
+ if(chkZ == -1) {
+   alert("Cette mention n'est pas un nombre!");
+   document.formulaire.cp.focus();
+   return false;
+  }
+}
+//-->
+
 +function ($) {
   'use strict';
 
@@ -257,6 +297,10 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     return this
   }
 
+$('.datepicker').datepicker({
+    format: 'yyyy/mm/dd',
+    startDate: '-3d'
+})
 
   // BUTTON DATA-API
   // ===============
