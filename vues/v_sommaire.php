@@ -19,7 +19,7 @@
            
            <!-- Si l'utilisateur est un comptable alors afficher cette fonctionnalité -->
            <?php 
-            if($_SESSION['prenom'])
+            if($_SESSION['identite'] == 'comptable')
             {
            ?>
            

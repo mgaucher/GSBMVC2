@@ -13,6 +13,148 @@ body{
      background-color: rgba(100,200,200,.7);
  }
 
+ .divCacheValidation
+ {
+  width: 800px; 
+  background-color: rgba(220,250,250,.9);
+  position: absolute;
+  margin-top: -150px;
+  margin-left: 30px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.5),
+              0 0 10px rgba(0,0,0,.8) inset;
+  border-radius: 5px;
+  padding: 30px;
+  padding-top: 10px;
+  display: block;
+  margin-bottom: 20px;
+ }
+
+.btn-validation
+{
+  border-color: rgba(50,50,50,.5); 
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+  background-color: rgba(50,50,50,.3);
+  width: 100px;
+  margin-left: 20px;
+}
+
+.btn-validation:hover
+{
+  background-color: rgba(50,50,50,.5);
+}
+
+.btn-validation-modification
+{
+  border-color: rgba(50,50,50,.5); 
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+  background-color: rgba(50,150,50,.3);
+  width: 200px;
+  margin-left: 50px;
+}
+
+.btn-validation-modification:hover
+{
+  background-color: rgba(50,150,50,.5);
+}
+
+.btn-annulation
+{
+  border-color: rgba(100,0,0,.5); 
+  background-color: rgba(100,50,50,.3);
+  box-shadow: 0 0 5px rgba(100,0,0,.7); 
+  width: 100px; 
+  margin-left: 20px;
+}
+
+.btn-annulation:hover
+{
+  background-color: rgba(100,50,50,.5);
+}
+
+.btn-suppression
+{
+  border-color: rgba(100,0,0,.5); 
+  background-color: rgba(200,50,50,.7);
+  box-shadow: 0 0 5px rgba(100,0,0,.7); 
+  width: 80%; 
+  margin-left: 20px;
+  color: rgba(0,0,0,.7);
+}
+
+.btn-suppression:hover
+{
+  background-color: rgba(200,50,50,.5);
+    color: rgba(150,0,0,.7);
+}
+
+.modifMontantInput
+{
+  text-align: center; 
+  width: 100%; 
+  font-size: 1.2em; 
+  background-color: transparent;
+}
+
+#ficheFraisValidee
+{
+  width: 300px;
+  padding: 30px;
+  background-color: rgba(200,255,255,.9);
+  color: rgba(0,120,0,.8);
+  position: relative;
+  margin-left: 250px;
+  margin-top: -130px;
+  margin-bottom: 50px;
+  border-radius: 5px; 
+  font-size: 1em;
+  box-shadow: 0 0 10px rgba(0,0,0,.8),
+              0 0 10px rgba(0,200,200,.5) inset;
+  display: none;
+}
+
+#motifSuppressionLigneHorsForfait
+{
+  padding: 20px;
+  position: absolute;
+  margin-left: 130px;
+  margin-top: 250px; 
+  background-color: rgba(200,255,255,.9);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,.8),
+              0 0 10px rgba(0,200,200,.5) inset;
+  border: solid 1px black;
+  display: none;
+}
+
+#ficheFraisNonValidee
+{
+  width: 320px;
+  padding: 30px;
+  background-color: rgba(255,200,200,.9);
+  color: rgba(0,0,0,.8);
+  position: relative;
+  margin-left: 240px;
+  margin-top: -130px;
+  margin-bottom: 50px;
+  border-radius: 5px; 
+  font-size: 1em;
+  box-shadow: 0 0 10px rgba(0,0,0,.8),
+              0 0 10px rgba(200,0,0,.5) inset;
+  display: none;
+}
+
+.modifierFicheFrais
+{
+  float: right;
+  margin-right: 20px;
+  color: rgba(150,100,100,.7);
+}
+
+.modifierFicheFrais:hover 
+{
+  text-decoration: underline;
+}
+
 #contenu{
 	border: none;
 	padding: 1.3em;
